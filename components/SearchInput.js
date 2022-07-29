@@ -31,9 +31,10 @@ export default function SearchInput() {
           />
           <div>
             {loading ? <div>Carregando...</div> : null}
+            {console.log(suggestions)}
             {suggestions.map((suggestion) => (
               <div {...getSuggestionItemProps(suggestion)} key={suggestion.placeId}>
-                {suggestion.description}
+                {suggestion.formattedSuggestion.mainText}
               </div>
             ))}
           </div>
