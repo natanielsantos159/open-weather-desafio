@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { AppProvider } from "../context/AppContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -8,9 +9,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Open Weather ☀️☁️</title>
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AppProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AppProvider>
     </>
   );
 }
