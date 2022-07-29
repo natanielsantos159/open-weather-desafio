@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AppContext } from "../../../context/AppContext";
 import getGeocodeByPlaceId from "../../../services/geocode.service";
 import weatherApi from "../../../services/weather.api.service";
 
@@ -33,8 +35,14 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
   const weatherList = list.map((item) => {
     return {
       temp: {
-        min: item.main.temp_min,
-        max: item.main.temp_max,
+        celsius: {
+          min: item.main.temp_min,
+          max: item.main.temp_max,
+        },
+        fahrenheit: {
+          min: item.main.temp_min * 9 / 5 + 32,
+          max: item.main.temp_max * 9 / 5 + 32,
+        },
       },
       date: item.dt_txt,
       icon: item.weather[0]?.icon,
@@ -48,7 +56,7 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
 };
 
 export default function FiveDays({ wheatherInfo }) {
-  console.log(wheatherInfo);
+  const { degree } = useContext(AppContext)
   const { city, weatherList } = wheatherInfo || {};
   const lang = "pt-br";
   const dateFormatter = new Intl.DateTimeFormat(lang, {
@@ -61,8 +69,8 @@ export default function FiveDays({ wheatherInfo }) {
       <div>{weatherList && weatherList.map((info, i) =>(
         <div key={i}>
           <div>{dateFormatter.format(new Date(info.date))}</div>
-          <div>{info.temp.min}</div>
-          <div>{info.temp.max}</div>
+          <div>{info.temp[degree].min}</div>
+          <div>{info.temp[degree].max}</div>
           <div>{info.description}</div>
         </div>
       ))}</div>

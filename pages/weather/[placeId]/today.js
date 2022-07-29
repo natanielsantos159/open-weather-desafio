@@ -28,14 +28,21 @@ export const getStaticPaths = async () => {
 
 const getWeatherData = async ({ lat, lng }) => {
   try {
-    const params = { lat, lon: lng, appid: process.env.OPEN_WEATHER_API_KEY };
+    const params = { lat, lon: lng, units: "metric", appid: process.env.OPEN_WEATHER_API_KEY };
     const { data } = await weatherApi.get("/data/2.5/weather/", { params });
     const weatherData = {
       city: data.name,
       temp: {
-        current: data.main.temp,
-        max: data.main.temp_max,
-        min: data.main.temp_min,
+        celsius: {
+          current: data.main.temp,
+          min: data.main.temp_min,
+          max: data.main.temp_max,
+        },
+        fahrenheit: {
+          current: data.main.temp * 9 / 5 + 32,
+          min: data.main.temp_min * 9 / 5 + 32,
+          max: data.main.temp_max * 9 / 5 + 32,
+        },
       },
       icon: data.weather[0]?.icon,
       description: data.weather[0]?.description,
