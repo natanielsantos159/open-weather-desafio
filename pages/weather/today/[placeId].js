@@ -1,12 +1,11 @@
-import axios from "axios";
 import React from "react";
-import weatherApi from "../../services/weather.api.service";
+import getGeocodeByPlaceId from "../../../services/geocode.service";
+import weatherApi from "../../../services/weather.api.service";
 
 export const getStaticProps = async (context) => {
   const { placeId } = context.params;
   try {
-    const link = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&key=${process.env.GOOGLE_MAPS_API_KEY}`;
-    const { data } = await axios.get(link);
+    const { data } = await getGeocodeByPlaceId(placeId);
     const { lat, lng } = data.results[0].geometry.location;
     const wheatherInfo = await getWeatherData({ lat, lng });
     return {

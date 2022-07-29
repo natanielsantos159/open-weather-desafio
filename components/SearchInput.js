@@ -22,7 +22,7 @@ export default function SearchInput() {
                 {...getSuggestionItemProps(suggestion)}
                 key={suggestion.placeId}
               >
-                <Link href={`weather/${suggestion.placeId}`}>
+                <Link href={`weather/today/${suggestion.placeId}`}>
                   {suggestion.formattedSuggestion.mainText}
                 </Link>
               </div>
