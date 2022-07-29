@@ -1,28 +1,14 @@
+import Link from "next/link";
 import React, { useState } from "react";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from "react-places-autocomplete";
+import PlacesAutocomplete from "react-places-autocomplete";
 
 export default function SearchInput() {
   const [address, setAddress] = useState("");
-  const [coordinates, setCoordinates] = useState({
-    lat: null,
-    lng: null,
-  });
-
-  const handleSelect = async (value) => {
-    const result = await geocodeByAddress(value);
-    const { lat, lng } = await getLatLng(result[0]);
-    setAddress(value);
-    setCoordinates({ lat, lng });
-  };
 
   return (
     <PlacesAutocomplete
       value={address}
       onChange={setAddress}
-      onSelect={handleSelect}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
@@ -31,10 +17,14 @@ export default function SearchInput() {
           />
           <div>
             {loading ? <div>Carregando...</div> : null}
-            {console.log(suggestions)}
             {suggestions.map((suggestion) => (
-              <div {...getSuggestionItemProps(suggestion)} key={suggestion.placeId}>
-                {suggestion.formattedSuggestion.mainText}
+              <div
+                {...getSuggestionItemProps(suggestion)}
+                key={suggestion.placeId}
+              >
+                <Link href={`weather/${suggestion.placeId}`}>
+                  {suggestion.formattedSuggestion.mainText}
+                </Link>
               </div>
             ))}
           </div>
