@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { AppContext } from "../../../context/AppContext";
 import getGeocodeByPlaceId from "../../../services/geocode.service";
 import weatherApi from "../../../services/weather.api.service";
@@ -10,6 +12,7 @@ export const getStaticProps = async (context) => {
   const wheatherInfo = await fetcheNextFiveDays({ lat, lng });
   return {
     props: {
+      ...(await serverSideTranslations(context.locale || 'pt-BR', ['common'])),
       wheatherInfo,
     },
   };
@@ -40,8 +43,8 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
           max: item.main.temp_max,
         },
         fahrenheit: {
-          min: item.main.temp_min * 9 / 5 + 32,
-          max: item.main.temp_max * 9 / 5 + 32,
+          min: (item.main.temp_min * 9) / 5 + 32,
+          max: (item.main.temp_max * 9) / 5 + 32,
         },
       },
       date: item.dt_txt,
@@ -56,7 +59,8 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
 };
 
 export default function FiveDays({ wheatherInfo }) {
-  const { degree } = useContext(AppContext)
+  const { t } = useTranslation();
+  const { degree } = useContext(AppContext);
   const { city, weatherList } = wheatherInfo || {};
   const lang = "pt-br";
   const dateFormatter = new Intl.DateTimeFormat(lang, {
@@ -66,14 +70,17 @@ export default function FiveDays({ wheatherInfo }) {
   return (
     <div>
       <div>{city}</div>
-      <div>{weatherList && weatherList.map((info, i) =>(
-        <div key={i}>
-          <div>{dateFormatter.format(new Date(info.date))}</div>
-          <div>{info.temp[degree].min}</div>
-          <div>{info.temp[degree].max}</div>
-          <div>{info.description}</div>
-        </div>
-      ))}</div>
+      <div>
+        {weatherList &&
+          weatherList.map((info, i) => (
+            <div key={i}>
+              <div>{dateFormatter.format(new Date(info.date))}</div>
+              <div>{info.temp[degree].min}</div>
+              <div>{info.temp[degree].max}</div>
+              <div>{t(info.description)}</div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
