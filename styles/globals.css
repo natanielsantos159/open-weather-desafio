@@ -1,10 +1,10 @@
 :root {
-  --primary-white: #FFFF;
-  --secondary-white: #D9D9D9;
-  --blue: #6AA2D1;
-  --pink: #D2B3C1;
-  --min-temp: #B5C69B;
-  --max-temp: #E0972A;
+  --primary-white: rgb(255, 255, 255);
+  --secondary-white: rgb(217, 217, 217);
+  --blue: rgb(106, 162, 209);
+  --pink: rgb(210, 179, 193);
+  --min-temp: rgb(181, 198, 155);
+  --max-temp: rgb(224, 151, 42);
   --dark: rgba(28, 36, 40, 0.49);;
 }
 
