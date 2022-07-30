@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import { useTranslation } from "react-i18next";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { AppContext } from "../../../context/AppContext";
 import getGeocodeByPlaceId from "../../../services/geocode.service";
 import weatherApi from "../../../services/weather.api.service";
+import translations from "../../../public/locales";
 
 export const getStaticProps = async (context) => {
   const { placeId } = context.params;
@@ -12,7 +11,6 @@ export const getStaticProps = async (context) => {
   const wheatherInfo = await fetcheNextFiveDays({ lat, lng });
   return {
     props: {
-      ...(await serverSideTranslations(context.locale || 'pt-BR', ['common'])),
       wheatherInfo,
     },
   };
@@ -59,10 +57,8 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
 };
 
 export default function FiveDays({ wheatherInfo }) {
-  const { t } = useTranslation();
-  const { degree } = useContext(AppContext);
+  const { degree, lang } = useContext(AppContext);
   const { city, weatherList } = wheatherInfo || {};
-  const lang = "pt-br";
   const dateFormatter = new Intl.DateTimeFormat(lang, {
     day: "numeric",
     month: "long",
@@ -77,7 +73,7 @@ export default function FiveDays({ wheatherInfo }) {
               <div>{dateFormatter.format(new Date(info.date))}</div>
               <div>{info.temp[degree].min}</div>
               <div>{info.temp[degree].max}</div>
-              <div>{t(info.description)}</div>
+              <div>{translations[lang].weathers[info.description.split(' ').join("_")] || ''}</div>
             </div>
           ))}
       </div>

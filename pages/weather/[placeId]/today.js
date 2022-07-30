@@ -1,4 +1,3 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import getGeocodeByPlaceId from "../../../services/geocode.service";
 import weatherApi from "../../../services/weather.api.service";
@@ -11,7 +10,6 @@ export const getStaticProps = async (context) => {
     const wheatherInfo = await getWeatherData({ lat, lng });
     return {
       props: {
-      ...(await serverSideTranslations(context.locale || 'pt-BR', ['common'])),
         wheatherInfo,
       },
       revalidate: 120
@@ -56,6 +54,5 @@ const getWeatherData = async ({ lat, lng }) => {
 };
 
 export default function WeatherDetails({ wheatherInfo }) {
-  console.log(wheatherInfo);
   return <div>Weather</div>;
 }
