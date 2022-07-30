@@ -1,0 +1,23 @@
+{
+  "language_name": "English",
+  "messages": {
+    "loading": "Loading...",
+    "type_the_city_name": "Type the name of the city",
+    "how_is_the_weather": "How is the weather today?"
+  },
+  "titles": {
+    "selected_language": "Selected language",
+    "see_5_days_forecast": "See weather forecast for the next 5 days",
+    "5_days_forecast": "Weather forecast for 5 days"
+  },
+  "weathers": {
+    "scattered_clouds": "scattered clouds",
+    "broken_clouds": "broken clouds",
+    "few_clouds": "few clouds",
+    "light_rain": "light rain",
+    "heavy_rain": "heavy rain",
+    "moderate_rain": "moderate rain",
+    "clear_sky": "clear sky",
+    "overcast_clouds": "overcast clouds"
+  }
+}

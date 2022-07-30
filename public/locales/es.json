@@ -1,0 +1,23 @@
+{
+  "language_name": "Español",
+  "messages": {
+    "loading": "Cargando...",
+    "type_the_city_name": "Ingrese el nombre de la ciudad",
+    "how_is_the_weather": "¿Cómo está el tiempo hoy?"
+  },
+  "titles": {
+    "selected_language": "Idioma seleccionado",
+    "see_5_days_forecast": "Ver previsión para los próximos 5 días",
+    "5_days_forecast": "Previsión para 5 días"
+  },
+  "weathers": {
+    "scattered_clouds": "nubes dispersas",
+    "broken_clouds": "nubes llenas",
+    "few_clouds": "pocas nubes",
+    "light_rain": "lluvia ligera",
+    "heavy_rain": "lluvia fuerte",
+    "moderate_rain": "lluvia moderada",
+    "clear_sky": "cielo claro",
+    "overcast_clouds": "nubes oscuras"
+  }
+}
