@@ -1,12 +1,13 @@
 import Link from "next/link";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useContext, useState } from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
 import styles from "../styles/SearchInput.module.css";
+import translations from "../public/locales";
+import { AppContext } from "../context/AppContext";
 
 export default function SearchInput() {
   const [address, setAddress] = useState("");
-  const { t } = useTranslation();
+  const { lang } = useContext(AppContext);
 
   return (
     <PlacesAutocomplete value={address} onChange={setAddress}>
@@ -14,14 +15,14 @@ export default function SearchInput() {
         <div>
           <input
             {...getInputProps({
-              placeholder: t("Digite o nome da cidade"),
+              placeholder: translations[lang].messages.type_the_city_name,
               className: `${styles.search_input} ${
                 suggestions.length || loading > 0 ? styles.expanded : ""
               }`,
             })}
           />
           <div className={styles.suggestions}>
-            {loading ? <div>{t("Carregando...")}</div> : null}
+            {loading ? <div>{translations[lang].messages.loading}</div> : null}
             {suggestions.map((suggestion) => (
               <div
                 {...getSuggestionItemProps(suggestion, {
