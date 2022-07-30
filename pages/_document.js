@@ -4,7 +4,6 @@ import Script from "next/script";
 
 export default class MyDocument extends Document {
   render() {
-    console.log(process.env.GOOGLE_MAPS_API_KEY)
     return (
       <Html lang="pt-br">
         <Head>
