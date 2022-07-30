@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import ToggleSwitch from "./ToggleSwitch";
+import styles from "../styles/Header.module.css";
 
 export default function Header() {
   const { degree, setDegree } = useContext(AppContext);
@@ -10,8 +11,12 @@ export default function Header() {
   }
 
   return (
-    <header>
-      <ToggleSwitch handleSwitch={handleSwitch} checked={degree === "celsius"}/>
+    <header className={styles.header}>
+      <div className={styles.temperature_switcher}>
+        °F
+        <ToggleSwitch handleSwitch={handleSwitch} checked={degree === "celsius"}/>
+        °C
+      </div>
     </header>
   )
 }

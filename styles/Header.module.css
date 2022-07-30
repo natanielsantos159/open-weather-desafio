@@ -1,0 +1,15 @@
+
+.header {
+  width: calc(100vw - 100px);
+  position: absolute;
+  top: 50px;
+}
+
+.temperature_switcher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  width: 95px;
+  margin-left: auto;
+}
