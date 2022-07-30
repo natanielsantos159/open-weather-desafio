@@ -1,9 +1,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import PlacesAutocomplete from "react-places-autocomplete";
 
 export default function SearchInput() {
   const [address, setAddress] = useState("");
+  const { t } = useTranslation();
 
   return (
     <PlacesAutocomplete
@@ -13,10 +15,10 @@ export default function SearchInput() {
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <input
-            {...getInputProps({ placeholder: "Digite o nome da cidade" })}
+            {...getInputProps({ placeholder: t("Digite o nome da cidade") })}
           />
           <div>
-            {loading ? <div>Carregando...</div> : null}
+            {loading ? <div>{t('Carregando...')}</div> : null}
             {suggestions.map((suggestion) => (
               <div
                 {...getSuggestionItemProps(suggestion)}
