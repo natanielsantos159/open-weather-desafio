@@ -26,3 +26,28 @@ a {
 * {
   box-sizing: border-box;
 }
+
+::placeholder {
+  color: var(--blue);;
+  opacity: 1;
+}
+
+::-webkit-input-placeholder {
+  color: var(--blue);;
+  opacity: 1;
+}
+
+:-moz-placeholder {
+  color: var(--blue);;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--blue);;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: var(--blue);;
+  opacity: 1;
+}
