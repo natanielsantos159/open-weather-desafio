@@ -3,6 +3,7 @@
   width: calc(100vw - 100px);
   position: absolute;
   top: 50px;
+  display: flex;
 }
 
 .temperature_switcher {

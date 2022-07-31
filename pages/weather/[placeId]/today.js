@@ -100,7 +100,7 @@ export default function WeatherToday({ weatherInfo, placeId }) {
             {weatherInfo.temp[degree].min}
           </div>
         </div>
-        <Link href={`/weather/${placeId}/5-day`} replace>
+        <Link href={`/weather/${placeId}/5-day`}>
           <a className={styles.five_days_btn}>
             {translations[lang].titles.see_5_days_forecast}
           </a>
