@@ -1,0 +1,19 @@
+
+.icons_wrapper, .info_wrapper, .language_switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info_wrapper{
+  gap: 5px;
+}
+
+.icons_wrapper > * {
+  cursor: pointer;
+}
+
+.language_switcher {
+  flex-direction: column;
+}
