@@ -1,0 +1,66 @@
+.weather_info {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.city_name {
+  font-size: 43px;
+  letter-spacing: 0.14em;
+  text-align: center;
+  margin: 0;
+}
+
+.weather_description {
+  font-size: 20px;
+}
+
+.weather_current_wrapper {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather_icon {
+  position: relative
+}
+
+.weather_current_temp {
+  font-size: 64px;
+}
+
+.weather_temp_info {
+  display: flex;
+  gap: 10px;
+}
+
+.weather_max_temp, .weather_min_temp {
+  font-size: 20px;
+}
+
+.weather_max_temp span, .weather_min_temp span {
+  font-weight: 700;
+}
+
+.weather_current_temp::after, .weather_max_temp::after, .weather_min_temp::after {
+  content: "°";
+}
+
+.five_days_btn {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 15px;
+  cursor: pointer;
+}
+
+.five_days_btn:hover {
+  text-decoration: underline;
+}
