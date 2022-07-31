@@ -30,13 +30,15 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
   const params = {
     lat,
     lon: lng,
-    cnt: 5,
+    cnt: 37,
     units: "metric",
     appid: process.env.OPEN_WEATHER_API_KEY,
   };
   const { data } = await weatherApi.get(`data/2.5/forecast/`, { params });
   const { city, list } = data;
-  const weatherList = list.map((item) => {
+  const filteredList = list.filter((item) => item.dt_txt.includes("12:00:00"));
+
+  const weatherList = filteredList.map((item) => {
     return {
       temp: {
         celsius: {
@@ -81,7 +83,7 @@ export default function FiveDays({ wheatherInfo }) {
     wheatherInfo && (
       <div className={styles.forecast_info}>
         <h1>{city.toUpperCase()}</h1>
-        <p>{translations[lang].titles.five_days_forecast}</p>
+        <p>{translations[lang].titles["5_days_forecast"]}</p>
 
         <table className={styles.day_details_table}>
           {weatherList.map((info, i) => (
