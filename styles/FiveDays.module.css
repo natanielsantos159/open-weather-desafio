@@ -1,0 +1,27 @@
+.forecast_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.day_details_row td{
+  padding: 15px;
+}
+
+.temp_min::after, .temp_max::after {
+  content: "°";
+}
+
+.temp_line::before {
+  content: "";
+  display: block;
+  width: 176px;
+  background: linear-gradient(to right, var(--min-temp), var(--max-temp));
+  height: 5px;
+}
+
+.weather_date {
+  font-weight: 700;
+}
