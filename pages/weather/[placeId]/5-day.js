@@ -76,7 +76,9 @@ export default function FiveDays({ wheatherInfo }) {
     const weekday = new Intl.DateTimeFormat(lang, { weekday: "long" }).format(
       date
     );
-    return `${capitalize(weekday).slice(0, 3)}, ${day} ${capitalize(month).slice(0, 3)}`;
+    return `${capitalize(weekday).slice(0, 3)}, ${day} ${capitalize(
+      month
+    ).slice(0, 3)}`;
   };
 
   return (
@@ -86,25 +88,30 @@ export default function FiveDays({ wheatherInfo }) {
         <p>{translations[lang].titles["5_days_forecast"]}</p>
 
         <table className={styles.day_details_table}>
-          {weatherList.map((info, i) => (
-            <tr className={styles.day_details_row} key={i}>
-              <td className={styles.weather_date}>{getParsedDate(info.date)}</td>
-              <Image
-                src={`http://openweathermap.org/img/wn/${info.icon}@2x.png`}
-                alt={`${info.description} icon`}
-                height="40px"
-                width="40px"
-              />
-              <td className={styles.temp_min}>{info.temp[degree].min}</td>
-              <td className={styles.temp_line}></td>
-              <td className={styles.temp_max}>{info.temp[degree].max}</td>
-              <td>
-                {translations[lang].weathers[
-                  info.description.split(" ").join("_")
-                ] || info.description}
-              </td>
-            </tr>
-          ))}
+          <thead></thead>
+          <tbody>
+            {weatherList.map((info, i) => (
+              <tr className={styles.day_details_row} key={i}>
+                <td className={styles.weather_date}>
+                  {getParsedDate(info.date)}
+                </td>
+                <Image
+                  src={`http://openweathermap.org/img/wn/${info.icon}@2x.png`}
+                  alt={`${info.description} icon`}
+                  height="40px"
+                  width="40px"
+                />
+                <td className={styles.temp_min}>{info.temp[degree].min}</td>
+                <td className={styles.temp_line}></td>
+                <td className={styles.temp_max}>{info.temp[degree].max}</td>
+                <td>
+                  {translations[lang].weathers[
+                    info.description.split(" ").join("_")
+                  ] || info.description}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     )
