@@ -22,7 +22,6 @@ export default function SearchInput() {
             })}
           />
           <div className={styles.suggestions}>
-            {loading ? <div>{translations[lang].messages.loading}</div> : null}
             {suggestions.map((suggestion) => (
               <div
                 {...getSuggestionItemProps(suggestion, {
