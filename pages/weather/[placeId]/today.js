@@ -12,10 +12,13 @@ export const getStaticProps = async (context) => {
       props: {
         wheatherInfo,
       },
-      revalidate: 120
+      revalidate: 120,
     };
   } catch (err) {
     console.log(err.message);
+    return {
+      props: {},
+    };
   }
 };
 
@@ -28,7 +31,12 @@ export const getStaticPaths = async () => {
 
 const getWeatherData = async ({ lat, lng }) => {
   try {
-    const params = { lat, lon: lng, units: "metric", appid: process.env.OPEN_WEATHER_API_KEY };
+    const params = {
+      lat,
+      lon: lng,
+      units: "metric",
+      appid: process.env.OPEN_WEATHER_API_KEY,
+    };
     const { data } = await weatherApi.get("/data/2.5/weather/", { params });
     const weatherData = {
       city: data.name,
@@ -39,9 +47,9 @@ const getWeatherData = async ({ lat, lng }) => {
           max: data.main.temp_max,
         },
         fahrenheit: {
-          current: data.main.temp * 9 / 5 + 32,
-          min: data.main.temp_min * 9 / 5 + 32,
-          max: data.main.temp_max * 9 / 5 + 32,
+          current: (data.main.temp * 9) / 5 + 32,
+          min: (data.main.temp_min * 9) / 5 + 32,
+          max: (data.main.temp_max * 9) / 5 + 32,
         },
       },
       icon: data.weather[0]?.icon,
