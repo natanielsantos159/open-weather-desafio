@@ -59,10 +59,19 @@ const fetcheNextFiveDays = async ({ lat, lng }) => {
 export default function FiveDays({ wheatherInfo }) {
   const { degree, lang } = useContext(AppContext);
   const { city, weatherList } = wheatherInfo || {};
-  const dateFormatter = new Intl.DateTimeFormat(lang, {
-    day: "numeric",
-    month: "long",
-  });
+
+  const capitalize = (word) => {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+  }
+
+  const getParsedDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = new Intl.DateTimeFormat(lang, {day: 'numeric'}).format(date);
+    const month = new Intl.DateTimeFormat(lang, {month: 'long'}).format(date);
+    const weekday = new Intl.DateTimeFormat(lang, {weekday: 'long'}).format(date);
+    return `${capitalize(weekday).slice(0, 3)}, ${day} ${capitalize(month).slice(0, 3)}`;
+  }
+
   return (
     <div>
       <div>{city}</div>
@@ -70,7 +79,7 @@ export default function FiveDays({ wheatherInfo }) {
         {weatherList &&
           weatherList.map((info, i) => (
             <div key={i}>
-              <div>{dateFormatter.format(new Date(info.date))}</div>
+              <div>{getParsedDate(info.date)}</div>
               <div>{info.temp[degree].min}</div>
               <div>{info.temp[degree].max}</div>
               <div>{translations[lang].weathers[info.description.split(' ').join("_")] || ''}</div>
