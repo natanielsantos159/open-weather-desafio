@@ -15,4 +15,5 @@
   height: 10vh;
   top: calc(50% - 10vh);
   transform: translateX(-50%);
+  z-index: 2;
 }

@@ -6,6 +6,8 @@
   border: 0;
   color: var(--blue);
   padding: 15px;
+  transition: all 0.4s ease-in-out;
+  caret-color: var(--pink);
 }
 
 .suggestions {
