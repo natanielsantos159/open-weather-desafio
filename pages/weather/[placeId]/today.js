@@ -43,7 +43,7 @@ export default function WeatherToday({ weatherInfo, placeId }) {
       <div className={styles.weather_info}>
         <h1 className={styles.city_name}>{weatherInfo.city.toUpperCase()}</h1>
         <div className={styles.weather_description}>
-          {translations[lang].weathers[weatherInfo.description] ||
+          {translations[lang].weathers[weatherInfo.description.split(" ").join("_")] ||
             weatherInfo.description}
         </div>
         <div className={styles.weather_current_wrapper}>
