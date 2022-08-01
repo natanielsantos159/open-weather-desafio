@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
 import getGeocodeByPlaceId from "../../../services/geocode.service";
-import weatherApi from "../../../services/weather.api.service";
+import { getTodayWeatherData } from "../../../services/weather.api.service";
 import translations from "../../../public/locales";
 import styles from "../../../styles/WeatherToday.module.css";
 import Image from "next/image";
@@ -12,7 +12,7 @@ export const getStaticProps = async (context) => {
   try {
     const { data } = await getGeocodeByPlaceId(placeId);
     const { lat, lng } = data.results[0].geometry.location;
-    const weatherInfo = await getWeatherData({ lat, lng });
+    const weatherInfo = await getTodayWeatherData({ lat, lng });
     return {
       props: {
         weatherInfo,
@@ -33,38 +33,6 @@ export const getStaticPaths = async () => {
     paths: [],
     fallback: true,
   };
-};
-
-const getWeatherData = async ({ lat, lng }) => {
-  try {
-    const params = {
-      lat,
-      lon: lng,
-      units: "metric",
-      appid: process.env.OPEN_WEATHER_API_KEY,
-    };
-    const { data } = await weatherApi.get("/data/2.5/weather/", { params });
-    const weatherData = {
-      city: data.name,
-      temp: {
-        celsius: {
-          current: Math.floor(data.main.temp),
-          min: Math.floor(data.main.temp_min),
-          max: Math.floor(data.main.temp_max),
-        },
-        fahrenheit: {
-          current: Math.floor((data.main.temp * 9) / 5 + 32),
-          min: Math.floor((data.main.temp_min * 9) / 5 + 32),
-          max: Math.floor((data.main.temp_max * 9) / 5 + 32),
-        },
-      },
-      icon: data.weather[0]?.icon,
-      description: data.weather[0]?.description.split(" ").join("_"),
-    };
-    return weatherData;
-  } catch (err) {
-    console.log(err.message);
-  }
 };
 
 export default function WeatherToday({ weatherInfo, placeId }) {
