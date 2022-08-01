@@ -41,19 +41,19 @@ export default function FiveDays({ weatherInfo }) {
           <tbody>
             {weatherList.map((info, i) => (
               <tr className={styles.day_details_row} key={i}>
-                <td className={styles.weather_date}>
-                  {info.date[lang]}
+                <td className={styles.weather_date}>{info.date[lang]}</td>
+                <td className={styles.weather_icon}>
+                  <Image
+                    src={`http://openweathermap.org/img/wn/${info.icon}@2x.png`}
+                    alt={`${info.description} icon`}
+                    height="40px"
+                    width="40px"
+                  />
                 </td>
-                <Image
-                  src={`http://openweathermap.org/img/wn/${info.icon}@2x.png`}
-                  alt={`${info.description} icon`}
-                  height="40px"
-                  width="40px"
-                />
                 <td className={styles.temp_min}>{info.temp[degree].min}</td>
                 <td className={styles.temp_line}></td>
                 <td className={styles.temp_max}>{info.temp[degree].max}</td>
-                <td>
+                <td className={styles.description}>
                   {translations[lang].weathers[
                     info.description.split(" ").join("_")
                   ] || info.description}

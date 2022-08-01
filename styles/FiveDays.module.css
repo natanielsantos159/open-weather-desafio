@@ -4,6 +4,11 @@
   align-items: center;
   align-content: center;
   justify-content: center;
+  text-align: center;
+}
+
+.forecast_info tr {
+  font-size: 1rem;
 }
 
 .day_details_row td{
@@ -17,11 +22,29 @@
 .temp_line::before {
   content: "";
   display: block;
-  width: 176px;
+  width: max(120px, 25vw);
   background: linear-gradient(to right, var(--min-temp), var(--max-temp));
   height: 5px;
 }
 
 .weather_date {
   font-weight: 700;
+}
+
+.weather_icon {
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .forecast_info {
+    width: 90vw;
+  }
+  .description {
+    display: none;
+  }
+
+  .temp_line::before {
+    width: 20vw;
+  }
+
 }
