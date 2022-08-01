@@ -1,4 +1,5 @@
 import getParsedDate from "./dateParser";
+import translations from "../public/locales";
 
 const weatherMapper = (item) => {
   return {
@@ -14,7 +15,12 @@ const weatherMapper = (item) => {
         max: Math.floor((item.main.temp_max * 9) / 5 + 32),
       },
     },
-    date: item.dt_txt || null,
+    date: item.dt_txt
+      ? Object.keys(translations).reduce((acc, lang) => {
+          acc[lang] = getParsedDate(item.dt_txt, lang);
+          return acc;
+      }, {})
+      : null,
     icon: item.weather[0]?.icon,
     description: item.weather[0]?.description,
   };

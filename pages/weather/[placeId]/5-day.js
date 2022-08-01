@@ -5,7 +5,6 @@ import { getFiveDaysForecast } from "../../../services/weather.api.service";
 import translations from "../../../public/locales";
 import styles from "../../../styles/FiveDays.module.css";
 import Image from "next/image";
-import getParsedDate from "../../../utils/dateParser";
 
 export const getStaticProps = async (context) => {
   const { placeId } = context.params;
@@ -43,7 +42,7 @@ export default function FiveDays({ weatherInfo }) {
             {weatherList.map((info, i) => (
               <tr className={styles.day_details_row} key={i}>
                 <td className={styles.weather_date}>
-                  {getParsedDate(info.date, lang)}
+                  {info.date[lang]}
                 </td>
                 <Image
                   src={`http://openweathermap.org/img/wn/${info.icon}@2x.png`}
