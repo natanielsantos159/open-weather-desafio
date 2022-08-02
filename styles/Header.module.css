@@ -1,9 +1,10 @@
 
 .header {
+  display: flex;
   width: calc(100vw - 100px);
   position: absolute;
   top: 50px;
-  display: flex;
+  gap: 15px;
 }
 
 .temperature_switcher {

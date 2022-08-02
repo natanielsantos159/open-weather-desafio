@@ -27,6 +27,14 @@ a {
   box-sizing: border-box;
 }
 
+button {
+  background: var(--pink);
+  cursor: pointer;
+  color: var(--primary-white);
+  outline: none;
+  border: none;
+}
+
 ::placeholder {
   color: var(--blue);;
   opacity: 1;
