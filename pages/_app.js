@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Open Weather ☀️☁️</title>
+        <title>Open Weather</title>
       </Head>
       <AppProvider>
         <Layout>
