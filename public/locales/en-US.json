@@ -3,12 +3,14 @@
   "messages": {
     "loading": "Loading...",
     "type_the_city_name": "Type the name of the city",
-    "how_is_the_weather": "How is the weather today?"
+    "how_is_the_weather": "How is the weather today?",
+    "geolocation_not_supported": "Geolocation are not supported by your browser."
   },
   "titles": {
     "selected_language": "Selected language",
     "see_5_days_forecast": "See weather forecast for the next 5 days",
-    "5_days_forecast": "Weather forecast for 5 days"
+    "5_days_forecast": "Weather forecast for 5 days",
+    "use_geolocation": "Use Geolocation"
   },
   "weathers": {
     "scattered_clouds": "scattered clouds",

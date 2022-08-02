@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { getPlaceIdByGeocode } from "../services/geocode.service";
 import Router from "next/router";
 import styles from "../styles/GeolocationButton.module.css";
+import translations from "../public/locales";
+import { AppContext } from "../context/AppContext";
 
 export default function GeolocationButton() {
+  const { lang } = useContext(AppContext);
+
   const redirectToWeatherPage = async (lat, lng) => {
     const placeId = await getPlaceIdByGeocode(lat, lng);
     if (placeId) Router.push(`weather/${placeId}/today`);
@@ -19,9 +23,7 @@ export default function GeolocationButton() {
         );
       });
     } else {
-      alert(
-        "I'm sorry, but geolocation services are not supported by your browser."
-      );
+      alert(translations[lang].messages.geolocation_not_supported);
     }
   };
 
@@ -33,7 +35,7 @@ export default function GeolocationButton() {
         src="/assets/geolocation-icon.svg"
         alt="Geolocation Icon"
       />
-      Usar Geolocalização
+      {translations[lang].titles.use_geolocation}
     </button>
   );
 }
