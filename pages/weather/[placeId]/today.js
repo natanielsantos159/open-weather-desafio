@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
-import getGeocodeByPlaceId from "../../../services/geocode.service";
+import { getGeocodeByPlaceId } from "../../../services/geocode.service";
 import { getTodayWeatherData } from "../../../services/weather.api.service";
 import translations from "../../../public/locales";
 import styles from "../../../styles/WeatherToday.module.css";

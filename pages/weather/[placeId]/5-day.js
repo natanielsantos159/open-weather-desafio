@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../../../context/AppContext";
-import getGeocodeByPlaceId from "../../../services/geocode.service";
+import { getGeocodeByPlaceId } from "../../../services/geocode.service";
 import { getFiveDaysForecast } from "../../../services/weather.api.service";
 import translations from "../../../public/locales";
 import styles from "../../../styles/FiveDays.module.css";

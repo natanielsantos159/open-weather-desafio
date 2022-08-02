@@ -4,6 +4,8 @@ import ToggleSwitch from "./ToggleSwitch";
 import styles from "../styles/Header.module.css";
 import BackButton from "./BackButton";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import GeolocationButton from "./GeolocationButton";
 
 export default function Header() {
   const { degree, setDegree } = useContext(AppContext);
@@ -11,16 +13,19 @@ export default function Header() {
 
   const handleSwitch = () => {
     setDegree(degree === "celsius" ? "fahrenheit" : "celsius");
-  }
+  };
 
   return (
     <header className={styles.header}>
-      {router.asPath !== '/' && <BackButton />}
+      {router.asPath !== "/" ? <BackButton /> : <GeolocationButton />}
       <div className={styles.temperature_switcher}>
         °F
-        <ToggleSwitch handleSwitch={handleSwitch} checked={degree === "celsius"}/>
+        <ToggleSwitch
+          handleSwitch={handleSwitch}
+          checked={degree === "celsius"}
+        />
         °C
       </div>
     </header>
-  )
+  );
 }
