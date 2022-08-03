@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Open Weather Project
+## Objetivo
+O intuito desse desafio é identificar o clima da cidade pesquisada através do site
+## Demonstração
 
-First, run the development server:
+![Imgur Image](http://i.imgur.com/ZZFea4X.gif)
+
+
+## O que foi desenvolvido
+
+Neste projeto, foi praticado as seguintes habilidades:
+ 
+- Página de pesquisa de cidade.
+- Página que mostra o clima da cidade pesquisada.
+- Página que mostra a previsão do clima nos próximos 5 dias da cidade pesquisada.
+- Opção de mudar a escala de grau: `Celsius` ou `Fahrenheit`.
+- Pesquisa por geolocalização.
+- Internacionalização para inglês/espanhol.
+
+## Rodando localmente
+
+Clone o projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone git@github.com:natanielsantos159/open-weather-desafio.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Entre no diretório do projeto
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  cd open-weather-desafio
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Instale as dependências
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  npm install
+```
 
-## Learn More
+Inicie o projeto
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Pronto! Acesse o projeto através do link http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Variáveis de Ambiente
 
-## Deploy on Vercel
+Para rodar esse projeto, você vai precisar configurar as seguintes variáveis de ambiente no seu `.env.local`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`OPEN_WEATHER_API_KEY`
+`GOOGLE_MAPS_API_KEY`
+`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Feedback
+
+Se você tiver algum feedback, por favor entre em contato por meio de nathan.santos159@hotmail.com
