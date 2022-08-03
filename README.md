@@ -3,8 +3,9 @@
 ## Objetivo
 O intuito desse desafio é identificar o clima da cidade pesquisada através do site
 ## Demonstração
+<a href="https://open-weather-desafio.vercel.app/">Link da aplicação :rocket:</a>
 
-![Imgur Image](http://i.imgur.com/ZZFea4X.gif)
+<img src="http://i.imgur.com/HCzjVAb.gif" alt="Imgur Image">
 
 
 ## O que foi desenvolvido
