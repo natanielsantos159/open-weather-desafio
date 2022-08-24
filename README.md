@@ -9,8 +9,6 @@ O intuito desse desafio é identificar o clima da cidade pesquisada através do 
 
 
 ## O que foi desenvolvido
-
-Neste projeto, foi praticado as seguintes habilidades:
  
 - Página de pesquisa de cidade.
 - Página que mostra o clima da cidade pesquisada.
