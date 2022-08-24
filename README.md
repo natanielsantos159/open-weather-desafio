@@ -1,7 +1,7 @@
 
 # Open Weather Project
 ## Objetivo
-O intuito desse desafio é identificar o clima da cidade pesquisada através do site
+O intuito desse desafio é identificar o clima atual e a previsão do clima nos próximos 5 dias da cidade pesquisada através do site
 ## Demonstração
 <a href="https://open-weather-desafio.vercel.app/">Link da aplicação :rocket:</a>
 
